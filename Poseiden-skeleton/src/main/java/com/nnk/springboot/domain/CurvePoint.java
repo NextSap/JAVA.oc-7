@@ -1,7 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -15,14 +15,18 @@ public class CurvePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
-    @NotNull(message = "curveId:Null") @NotBlank(message = "curveId:Required")
+
+    @NotNull(message = "CurveId is mandatory")
+    @Min(value = 1, message = "CurveId must be positive")
     Integer curveId;
-    @NotNull(message = "asOfDate:Null")
+
     private Timestamp asOfDate;
-    @NotNull(message = "term:Null")
+
+    @NotNull(message = "Term is mandatory")
     private Double term;
-    @NotNull(message = "value:Null")
+
+    @NotNull(message = "Value is mandatory")
     private Double value;
-    @NotNull(message = "creationDate:Null")
+
     private Timestamp creationDate;
 }

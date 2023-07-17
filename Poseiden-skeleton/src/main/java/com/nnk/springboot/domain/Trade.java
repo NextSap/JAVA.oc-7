@@ -1,6 +1,7 @@
 package com.nnk.springboot.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -12,46 +13,50 @@ import java.sql.Timestamp;
 @Table(name = "trade")
 public class Trade {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer tradeId;
-    @NotNull(message = "account:Null") @NotBlank(message = "account:Required")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+
+    @NotBlank(message = "Account is mandatory")
     private String account;
-    @NotNull(message = "type:Null") @NotBlank(message = "type:Required")
+
+    @NotBlank(message = "Type is mandatory")
     private String type;
-    @NotNull(message = "buyQuantity:Null")
+
+    @NotNull(message = "Buy Quantity is mandatory")
+    @DecimalMin(value = "0", inclusive = false, message = "Buy Quantity must be positive")
     private Double buyQuantity;
-    @NotNull(message = "sellQuantity:Null")
+
     private Double sellQuantity;
-    @NotNull(message = "buyPrice:Null")
+
     private Double buyPrice;
-    @NotNull(message = "sellPrice:Null")
+
     private Double sellPrice;
-    @NotNull(message = "tradeDate:Null") @NotBlank(message = "tradeDate:Required")
+
     private String benchmark;
-    @NotNull(message = "tradeDate:Null")
+
     private Timestamp tradeDate;
-    @NotNull(message = "security:Null") @NotBlank(message = "security:Required")
+
     private String security;
-    @NotNull(message = "status:Null") @NotBlank(message = "status:Required")
+
     private String status;
-    @NotNull(message = "trader:Null") @NotBlank(message = "trader:Required")
+
     private String trader;
-    @NotNull(message = "book:Null") @NotBlank(message = "book:Required")
+
     private String book;
-    @NotNull(message = "creationName:Null") @NotBlank(message = "creationName:Required")
+
     private String creationName;
-    @NotNull(message = "creationDate:Null")
+
     private Timestamp creationDate;
-    @NotNull(message = "revisionName:Null") @NotBlank(message = "revisionName:Required")
+
     private String revisionName;
-    @NotNull(message = "revisionDate:Null")
+
     private Timestamp revisionDate;
-    @NotNull(message = "dealName:Null") @NotBlank(message = "dealName:Required")
+
     private String dealName;
-    @NotNull(message = "dealType:Null") @NotBlank(message = "dealType:Required")
+
     private String dealType;
-    @NotNull(message = "sourceListId:Null") @NotBlank(message = "sourceListId:Required")
+
     private String sourceListId;
-    @NotNull(message = "side:Null") @NotBlank(message = "side:Required")
+
     private String side;
 }
