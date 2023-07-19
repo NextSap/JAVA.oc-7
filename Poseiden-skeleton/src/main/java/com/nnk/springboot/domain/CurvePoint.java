@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "curvepoint")
 public class CurvePoint {
     @Id
@@ -29,4 +31,10 @@ public class CurvePoint {
     private Double value;
 
     private Timestamp creationDate;
+
+    public CurvePoint(Integer curveId, Double term, Double value) {
+        this.curveId = curveId;
+        this.term = term;
+        this.value = value;
+    }
 }

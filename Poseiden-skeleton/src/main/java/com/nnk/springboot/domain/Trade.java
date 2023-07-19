@@ -5,11 +5,13 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "trade")
 public class Trade {
     @Id
@@ -59,4 +61,10 @@ public class Trade {
     private String sourceListId;
 
     private String side;
+
+    public Trade(String account, String type, Double buyQuantity) {
+        this.account = account;
+        this.type = type;
+        this.buyQuantity = buyQuantity;
+    }
 }
