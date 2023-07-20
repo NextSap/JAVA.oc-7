@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  poseidon-service:
+    build: .
+    container_name: poseidon-service
+    image: poseidon-service
+    restart: on-failure
+    ports:
+      - "8000:8080"
+    environment:
+      MYSQL_HOST: poseidon-db
+      MYSQL_PORT: 3306
+      MYSQL_PASSWORD: root
+    depends_on:
+      - poseidon-db
+
+  poseidon-db:
+    image: "mysql:latest"
+    container_name: poseidon-db
+    restart: on-failure
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: poseidon
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./doc/data.sql:/docker-entrypoint-initdb.d/data.sql
