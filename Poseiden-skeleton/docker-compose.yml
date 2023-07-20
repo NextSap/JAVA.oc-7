@@ -6,13 +6,14 @@ services:
     image: poseidon-service
     restart: on-failure
     ports:
-      - "8000:8080"
+      - "8080:8080"
     environment:
       MYSQL_HOST: poseidon-db
       MYSQL_PORT: 3306
-      MYSQL_PASSWORD: root
+      VAULT_HOST: poseidon-vault
     depends_on:
       - poseidon-db
+      - poseidon-vault
 
   poseidon-db:
     image: "mysql:latest"
@@ -25,3 +26,18 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./doc/data.sql:/docker-entrypoint-initdb.d/data.sql
+    depends_on:
+      - poseidon-vault
+
+  poseidon-vault:
+    image: "hashicorp/vault:latest"
+    restart: on-failure
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: '00000000-0000-0000-0000-000000000000'
+      VAULT_DEV_LISTEN_ADDRESS: '0.0.0.0:8200'
+      VAULT_ADDR: 'http://0.0.0.0:8200'
+    cap_add:
+      - IPC_LOCK
+    container_name: poseidon-vault
