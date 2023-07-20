@@ -27,7 +27,7 @@ public class SecurityConfig {
                                 .requestMatchers("/static/**").permitAll()
                                 .requestMatchers("/", "/login").permitAll()
                                 .requestMatchers("/bidList/**", "/rating/**", "/ruleName/**", "/trade/**", "/curvePoint/**", "/app/error", "/app/logout").hasAnyAuthority("ADMIN", "USER")
-                                .requestMatchers("/user/**").hasAuthority("ADMIN")
+                                .requestMatchers("/user/**", "/admin/**").hasAuthority("ADMIN")
                                 .anyRequest().authenticated());
         return http.build();
     }
