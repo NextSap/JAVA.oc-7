@@ -1,27 +1,29 @@
-# spring-boot
-## Technical:
+![Logo.png](.readme%2FLogo.png)
 
-1. Spring Boot 3.1.0
-2. Java 17
-3. Thymeleaf
-4. Bootstrap v.4.3.1
+# Poseidon
 
+Poseidon est une application web de gestion de portefeuille boursier.
 
-## Setup with Intellij IDE
-1. Create project from Initializr: File > New > project > Spring Initializr
-2. Add lib repository into pom.xml
-3. Add folders
-    - Source root: src/main/java
-    - View: src/main/resources
-    - Static: src/main/resource/static
-4. Create database with name "demo" as configuration in application.properties
-5. Run sql script to create table doc/data.sql
+## Installation
 
-## Implement a Feature
-1. Create mapping domain class and place in package com.nnk.springboot.domain
-2. Create repository class and place in package com.nnk.springboot.repositories
-3. Create controller class and place in package com.nnk.springboot.controllers
+Ces instructions vous permettront d'obtenir une copie du projet sur votre machine locale à des fins de développement et
+de test.
 
-## Security
-1. Create user service to load user from  database and place in package com.nnk.springboot.services
-2. Add configuration class and place in package com.nnk.springboot.config
+### Prérequis
+
+* Installer <a target="_blank" href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html">Java
+  17+</a>
+* Installer <a target="_blank" href="https://docs.docker.com/get-docker/">Docker</a>
+  et <a target="_blank" href="https://docs.docker.com/compose/install/">Docker Compose</a>
+
+### <p id="starting">Démarrage</p>
+
+Démarrage de l'outil de gestion du projet (<a href="https://github.com/NextSap/ProjectManager/tree/java.oc-7">voir les sources</a>) :
+
+```bash
+java -jar Manager.jar true # true indique au programme que vous utilisez une machine Windows, ne mettez aucun argument si vous utilisez une machine MacOS ou Linux
+```
+
+Grâce à cet outil, vous pouvez :
+- Créer, lancer, éteindre et supprimer les containers Docker de l'application
+- Gérer les secrets de l'application de manière sécurisée
