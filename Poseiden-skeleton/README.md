@@ -27,3 +27,13 @@ java -jar Manager.jar true # true indique au programme que vous utilisez une mac
 Grâce à cet outil, vous pouvez :
 - Créer, lancer, éteindre et supprimer les containers Docker de l'application
 - Gérer les secrets de l'application de manière sécurisée
+
+### Identifiants de connexion
+
+Admin :
+- Username : admin@poseidon.com
+- Password : Password1@
+
+User :
+- Username : user@poseidon.com
+- Password : Password1@

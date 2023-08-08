@@ -45,14 +45,4 @@ public class LoginController {
         logger.info("GET /app/secure/article-details called successfully");
         return mav;
     }
-
-    @GetMapping("/error")
-    public ModelAndView error() {
-        ModelAndView mav = new ModelAndView();
-        String errorMessage= "You are not authorized for the requested data.";
-        mav.addObject("errorMsg", errorMessage);
-        mav.setViewName("/403");
-        logger.info("GET /app/error called successfully");
-        return mav;
-    }
 }
