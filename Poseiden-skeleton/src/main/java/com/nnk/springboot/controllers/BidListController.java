@@ -56,7 +56,7 @@ public class BidListController {
 
         if (bid.isEmpty()) {
             logger.error("GET /bidList/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/bidList/list";
         }
 
         bid.get().setId(id);

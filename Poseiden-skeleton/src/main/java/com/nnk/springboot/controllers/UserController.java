@@ -59,7 +59,7 @@ public class UserController {
 
         if (user.isEmpty()) {
             logger.error("GET /user/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/user/list";
         }
 
         user.get().setId(id);

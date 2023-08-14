@@ -58,7 +58,7 @@ public class RuleNameController {
         Optional<RuleName> ruleName = ruleNameRepository.findById(id);
         if(ruleName.isEmpty()) {
             logger.error("GET /ruleName/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/ruleName/list";
         }
 
         ruleName.get().setId(id);

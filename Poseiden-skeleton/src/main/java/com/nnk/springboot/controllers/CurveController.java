@@ -57,7 +57,7 @@ public class CurveController {
         Optional<CurvePoint> curvePoint = curvePointRepository.findById(id);
         if (curvePoint.isEmpty()) {
             logger.error("GET /curvePoint/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/curvePoint/list";
         }
 
         curvePoint.get().setId(id);

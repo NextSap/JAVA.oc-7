@@ -60,7 +60,7 @@ public class TradeController {
 
         if (trade.isEmpty()) {
             logger.error("GET /trade/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/trade/list";
         }
 
         trade.get().setId(id);

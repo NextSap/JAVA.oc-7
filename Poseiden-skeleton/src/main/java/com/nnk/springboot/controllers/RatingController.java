@@ -61,7 +61,7 @@ public class RatingController {
 
         if (rating.isEmpty()) {
             logger.error("GET /rating/update/" + id + " called but not found");
-            return "404";
+            return "redirect:/rating/list";
         }
 
         rating.get().setId(id);
